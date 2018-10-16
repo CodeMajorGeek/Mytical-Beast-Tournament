@@ -12,6 +12,7 @@ public class Main {
 	private static SQLConnection sql;
 	private static BinaryBeast binaryBeast;
 	
+	
 	public static void main(String[] args) {
 		
 		preInit();
@@ -22,15 +23,24 @@ public class Main {
 		
 		new References();
 		
+		new ListPanel();
+		
 		frame = new Frame();
-		frame.createFrame("Mythical Beast Tournament", new Dimension(500, 500));
+		frame.createFrame("Mythical Beast Tournament", new Dimension(700, 300));
 		sql = new SQLConnection(References.SQL_HOST, References.SQL_DBNAME, References.SQL_USER, References.SQL_PASSWD);
 		binaryBeast = new BinaryBeast(References.BINARYBEAST_APIKEY);
 	}
 	
 	private static void init() {
 		
-		//binaryBeast.addTournament("test");
+		ListPanel.tourneyList = sql.getallTournament();
+		ListPanel.getMainList.refresh();
+	}
+	
+	public static void refresh() {
+		
+		ListPanel.tourneyList = sql.getallTournament();
+		ListPanel.getMainList.refresh();
 	}
 	
 	public static SQLConnection getSQLConnection() {

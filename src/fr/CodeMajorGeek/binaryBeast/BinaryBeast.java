@@ -45,4 +45,22 @@ public class BinaryBeast {
 			}
 		});
 	}
+	
+	public void deleteTournament(String TourneyID) {
+		
+		BBRequest.tourneyDelete(TourneyID).execute(new BBRequestHandler() {
+
+			@Override
+			public void onResponse(BBResult r) {
+				
+				if(r.result == 200) {
+					
+					sql.deleteTournament(TourneyID);
+				} else {
+					
+					System.exit(-1);
+				}
+			}
+		});
+	}
 }

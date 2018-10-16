@@ -14,4 +14,8 @@ public class Panel extends JPanel{
 		requestFocus();
 	}
 	
+	public void refresh() {
+		
+		
+	}
 }

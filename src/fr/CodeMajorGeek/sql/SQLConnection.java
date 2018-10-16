@@ -2,8 +2,13 @@ package fr.CodeMajorGeek.sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import fr.CodeMajorGeek.panel.Main;
+import fr.CodeMajorGeek.panel.TourneyList;
 
 public class SQLConnection {
 	
@@ -34,5 +39,45 @@ public class SQLConnection {
 			e.printStackTrace();
 			System.exit(-1);
 		}
+		
+		Main.refresh();
 	}
+	
+	public void deleteTournament(String TourneyID) {
+		
+		
+		try {
+			Statement stat = connection.createStatement();
+			stat.execute("DELETE FROM tournament WHERE TourneyID = '" + TourneyID + "'");
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			System.exit(-1);
+		}
+		
+		Main.refresh();
+	}
+	
+	public ArrayList<TourneyList> getallTournament() {
+		ArrayList<TourneyList> list = new ArrayList<TourneyList>();
+		
+		try {
+			
+			Statement stat = connection.createStatement();
+			ResultSet res = stat.executeQuery("SELECT id, Title, APIRequestID, TourneyID, APIFrameworkTime, APITotalTime, APIServiceTime, URL, Result FROM tournament");
+			
+			while(res.next()) {
+				
+				list.add(new TourneyList(res.getInt("id"), res.getString("Title"), res.getInt("APIRequestID"), res.getString("TourneyID"), res.getString("APIFrameworkTime"), res.getString("APITotalTime"), res.getString("APIServiceTime"), res.getString("URL"), res.getInt("Result")));
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			System.exit(-1);
+		}
+		
+		return list;
+	}
+	
 }
