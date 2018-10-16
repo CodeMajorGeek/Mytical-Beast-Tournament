@@ -22,14 +22,15 @@ public class Main {
 		
 		new References();
 		
-		frame = new Frame("Mythical Beast Tournament", new Dimension(500, 500));
+		frame = new Frame();
+		frame.createFrame("Mythical Beast Tournament", new Dimension(500, 500));
 		sql = new SQLConnection(References.SQL_HOST, References.SQL_DBNAME, References.SQL_USER, References.SQL_PASSWD);
 		binaryBeast = new BinaryBeast(References.BINARYBEAST_APIKEY);
 	}
 	
 	private static void init() {
 		
-		binaryBeast.addTournament("test");
+		//binaryBeast.addTournament("test");
 	}
 	
 	public static SQLConnection getSQLConnection() {
