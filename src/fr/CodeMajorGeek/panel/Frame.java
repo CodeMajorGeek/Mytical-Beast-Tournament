@@ -25,8 +25,9 @@ public class Frame extends JFrame implements ActionListener{
 	
 	private JMenuItem item0 = new JMenuItem("Ouvrir", KeyEvent.VK_T);
 	private JMenuItem item1 = new JMenuItem("Enrengistrer", KeyEvent.VK_T);
-	private JMenuItem item2 = new JMenuItem("Créer un tournoi", KeyEvent.VK_T);
-	private JMenuItem item3 = new JMenuItem("Lister les tournois", KeyEvent.VK_T);
+	private JMenuItem item2 = new JMenuItem("Accueil", KeyEvent.VK_T);
+	private JMenuItem item3 = new JMenuItem("Créer un tournoi", KeyEvent.VK_T);
+	private JMenuItem item4 = new JMenuItem("Lister les tournois", KeyEvent.VK_T);
 	
 	public Frame() {
 		
@@ -37,6 +38,7 @@ public class Frame extends JFrame implements ActionListener{
 		menu0.add(item1);
 		menu1.add(item2);
 		menu1.add(item3);
+		menu1.add(item4);
 		
 		item0.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
 		item0.getAccessibleContext().setAccessibleDescription("Ouvrir une configuration");
@@ -44,16 +46,20 @@ public class Frame extends JFrame implements ActionListener{
 		item1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 		item1.getAccessibleContext().setAccessibleDescription("Enrengistrer une configuration");
 		
-		item2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK));
-		item2.getAccessibleContext().setAccessibleDescription("Créer un tournoi");
+		item2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
+		item2.getAccessibleContext().setAccessibleDescription("Accueil");
 		
-		item3.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
-		item3.getAccessibleContext().setAccessibleDescription("Lister tous les tournois");
+		item3.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK));
+		item3.getAccessibleContext().setAccessibleDescription("Créer un tournoi");
+		
+		item4.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
+		item4.getAccessibleContext().setAccessibleDescription("Lister tous les tournois");
 		
 		item0.addActionListener(this);
 		item1.addActionListener(this);
 		item2.addActionListener(this);
 		item3.addActionListener(this);
+		item4.addActionListener(this);
 	}
 	
 	public void createFrame(String title, Dimension dim) {
@@ -61,7 +67,7 @@ public class Frame extends JFrame implements ActionListener{
 		this.title = title;
 		
 		setSize(dim);
-		setTitle(title);
+		setTitle(title + " - Accueil");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setJMenuBar(toolsBar);
 		setContentPane(new ListPanel());
@@ -77,8 +83,15 @@ public class Frame extends JFrame implements ActionListener{
 			contentPane.add(new AddPanel());
 			contentPane.revalidate(); 
 			contentPane.repaint();
-			setTitle(title + " - Créer un tournoi");
+			setTitle(title + " - Accueil");
 		} else if(panel == 1) {
+			
+			contentPane.removeAll();
+			contentPane.add(new AddPanel());
+			contentPane.revalidate(); 
+			contentPane.repaint();
+			setTitle(title + " - Créer un tournoi");
+		} else if(panel == 2) {
 			
 			contentPane.removeAll();
 			contentPane.add(new ListPanel());
@@ -103,6 +116,9 @@ public class Frame extends JFrame implements ActionListener{
 		} else if(e.getSource().equals(item3)) {
 			
 			changePane(1);
+		} else if(e.getSource().equals(item4)) {
+			
+			changePane(2);
 		}
 	}
 	
