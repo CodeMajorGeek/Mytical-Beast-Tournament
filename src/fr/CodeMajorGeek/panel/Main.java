@@ -13,11 +13,21 @@ public class Main {
 	private static BinaryBeast binaryBeast;
 	
 	public static void main(String[] args) {
+		
+		preInit();
+		init();
+	}
+	
+	private static void preInit() {
+		
 		new References();
 		
 		frame = new Frame("Mythical Beast Tournament", new Dimension(500, 500));
 		sql = new SQLConnection(References.SQL_HOST, References.SQL_DBNAME, References.SQL_USER, References.SQL_PASSWD);
 		binaryBeast = new BinaryBeast(References.BINARYBEAST_APIKEY);
+	}
+	
+	private static void init() {
 		
 		binaryBeast.addTournament("test");
 	}
