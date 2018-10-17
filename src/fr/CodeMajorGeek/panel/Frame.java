@@ -21,8 +21,9 @@ public class Frame extends JFrame implements ActionListener{
 	private JMenuBar toolsBar = new JMenuBar();
 	
 	private JMenu menu0 = new JMenu("Fichier");
-	private JMenu menu1 = new JMenu("Outils");
-	private JMenu menu2 = new JMenu("Aide");
+	private JMenu menu1 = new JMenu("Tournoi");
+	private JMenu menu2 = new JMenu("Team");
+	private JMenu menu3= new JMenu("Aide");
 	
 	private JMenuItem item0 = new JMenuItem("Ouvrir", KeyEvent.VK_T);
 	private JMenuItem item1 = new JMenuItem("Enrengistrer", KeyEvent.VK_T);
@@ -30,19 +31,22 @@ public class Frame extends JFrame implements ActionListener{
 	private JMenuItem item3 = new JMenuItem("Créer un tournoi", KeyEvent.VK_T);
 	private JMenuItem item4 = new JMenuItem("Lister les tournois", KeyEvent.VK_T);
 	private JMenuItem item5 = new JMenuItem("Actualiser", KeyEvent.VK_T);
+	private JMenuItem item6 = new JMenuItem("Créer une team", KeyEvent.VK_T);
 	
 	public Frame() {
 		
 		toolsBar.add(menu0);
 		toolsBar.add(menu1);
 		toolsBar.add(menu2);
+		toolsBar.add(menu3);
 		
 		menu0.add(item0);
 		menu0.add(item1);
 		menu1.add(item2);
 		menu1.add(item3);
 		menu1.add(item4);
-		menu2.add(item5);
+		menu2.add(item6);
+		menu3.add(item5);
 		
 		item0.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
 		item0.getAccessibleContext().setAccessibleDescription("Ouvrir une configuration");
@@ -62,12 +66,16 @@ public class Frame extends JFrame implements ActionListener{
 		item5.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
 		item5.getAccessibleContext().setAccessibleDescription("Actualiser tout les serveurs");
 		
+		item6.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
+		item6.getAccessibleContext().setAccessibleDescription("Actualiser tout les serveurs");
+		
 		item0.addActionListener(this);
 		item1.addActionListener(this);
 		item2.addActionListener(this);
 		item3.addActionListener(this);
 		item4.addActionListener(this);
 		item5.addActionListener(this);
+		item6.addActionListener(this);
 	}
 	
 	public void createFrame(String title, Dimension dim) {
@@ -106,7 +114,14 @@ public class Frame extends JFrame implements ActionListener{
 			contentPane.revalidate(); 
 			contentPane.repaint();
 			setTitle(title + " - Liste des tournois");
-		} 
+		} else if(panel == 3) {
+			
+			contentPane.removeAll();
+			contentPane.add(new TeamPanel());
+			contentPane.revalidate(); 
+			contentPane.repaint();
+			setTitle(title + " - Crééer une team");
+		}
 	}
 	
 	@Override
@@ -130,6 +145,9 @@ public class Frame extends JFrame implements ActionListener{
 		} else if(e.getSource().equals(item5)) {
 			
 			Main.refresh();
+		} else if(e.getSource().equals(item6)) {
+			
+			changePane(3);
 		}
 	}
 	

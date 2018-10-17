@@ -47,6 +47,7 @@ public class SQLConnection {
 		
 		
 		try {
+			
 			Statement stat = connection.createStatement();
 			stat.execute("DELETE FROM tournament WHERE TourneyID = '" + TourneyID + "'");
 		} catch (SQLException e) {
@@ -56,6 +57,19 @@ public class SQLConnection {
 		}
 		
 		Main.refresh();
+	}
+	
+	public void updateTournament(String TourneyID, String APIRequestID) {
+		
+		try {
+			
+			Statement stat = connection.createStatement();
+			stat.execute("UPDATE tournament SET APIRequestID = '" + APIRequestID + "' WHERE TourneyID = '" + TourneyID + "'");
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			System.exit(-1);
+		}
 	}
 	
 	public ArrayList<TourneyList> getallTournament() {

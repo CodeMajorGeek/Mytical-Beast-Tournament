@@ -2,11 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="D:/all-Workspace/Workspace-pro/Mytical-Beast-Tournament/APIs/BinaryBeastAPI.jar"/>
-	<classpathentry kind="lib" path="D:/all-Workspace/Workspace-pro/Mytical-Beast-Tournament/APIs/commons-beanutils-1.9.3.jar"/>
-	<classpathentry kind="lib" path="D:/all-Workspace/Workspace-pro/Mytical-Beast-Tournament/APIs/commons-configuration2-2.3.jar"/>
-	<classpathentry kind="lib" path="D:/all-Workspace/Workspace-pro/Mytical-Beast-Tournament/APIs/commons-lang3-3.8.1.jar"/>
-	<classpathentry kind="lib" path="D:/all-Workspace/Workspace-pro/Mytical-Beast-Tournament/APIs/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="D:/all-Workspace/Workspace-pro/Mytical-Beast-Tournament/APIs/mysql-connector-java-5.1.47.jar"/>
+	<classpathentry kind="lib" path="E:/all Workspace/Workspace-pro/Mytical_Beast_Tournament/APIs/BinaryBeastAPI.jar"/>
+	<classpathentry kind="lib" path="E:/all Workspace/Workspace-pro/Mytical_Beast_Tournament/APIs/commons-beanutils-1.9.3.jar"/>
+	<classpathentry kind="lib" path="E:/all Workspace/Workspace-pro/Mytical_Beast_Tournament/APIs/commons-configuration2-2.3.jar"/>
+	<classpathentry kind="lib" path="E:/all Workspace/Workspace-pro/Mytical_Beast_Tournament/APIs/commons-lang3-3.8.1.jar"/>
+	<classpathentry kind="lib" path="E:/all Workspace/Workspace-pro/Mytical_Beast_Tournament/APIs/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="E:/all Workspace/Workspace-pro/Mytical_Beast_Tournament/APIs/mysql-connector-java-5.1.47.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

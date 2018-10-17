@@ -48,6 +48,7 @@ public class TourneyList {
 		JTextField ID = new JTextField(TourneyID + "", 7);
 		JTextField url = new JTextField(URL);
 		
+		JButton start = new JButton("Démarrer");
 		JButton remove = new JButton("Supprimer");
 		
 		title.setEditable(false);
@@ -60,6 +61,15 @@ public class TourneyList {
 			public void actionPerformed(ActionEvent e) {
 				
 				binaryBeast.deleteTournament(TourneyID);
+			}
+		});
+		
+		start.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				binaryBeast.startTournament(TourneyID, "manual", "0");
 			}
 		});
 		

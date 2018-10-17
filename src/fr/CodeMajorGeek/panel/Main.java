@@ -33,6 +33,9 @@ public class Main {
 	
 	private static void init() {
 		
+		//binaryBeast.insertTeam("xSC21810175", "Mytical Beast");
+		//binaryBeast.startTournament("xSC21810175", "manual", "1");
+		
 		ListPanel.tourneyList = sql.getallTournament();
 		ListPanel.getMainList.refresh();
 	}
