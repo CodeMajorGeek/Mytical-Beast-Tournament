@@ -80,6 +80,7 @@ public class TourneyList {
 		panel.add(new JLabel("URL: "));
 		panel.add(url);
 		panel.add(remove);
+		panel.add(start);
 		
 		panel.setBorder(new CompoundBorder(new LineBorder(Color.lightGray), new EmptyBorder(4,4,4,4)));
 		

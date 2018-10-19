@@ -9,14 +9,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import fr.CodeMajorGeek.binaryBeast.BinaryBeast;
+
 public class TeamPanel extends JPanel implements ActionListener{
 	
 	private static final long serialVersionUID = -6650123716388744857L;
 	
 	public static TeamPanel getMainTeam;
 	
+	public static BinaryBeast binaryBeast = Main.getBinaryBeast();
+	
 	private JTextField name = new JTextField(7);
 	private JComboBox<?> tourney;
+	private String[] tourneyID;
 	private JButton add = new JButton("Ajouter");
 	
 	
@@ -28,7 +33,12 @@ public class TeamPanel extends JPanel implements ActionListener{
 		getMainTeam = this;
 		
 		String[] tournament = new String[ListPanel.tourneyList.size()];
-		for(int i = 0; i <= ListPanel.tourneyList.size() - 1; i++) tournament[i] = ListPanel.tourneyList.get(i).Title;
+		tourneyID = new String[ListPanel.tourneyList.size()];
+		for(int i = 0; i <= ListPanel.tourneyList.size() - 1; i++) {
+			
+			tournament[i] = ListPanel.tourneyList.get(i).Title;
+			tourneyID[i] = ListPanel.tourneyList.get(i).TourneyID;
+		}
 		
 		tourney = new JComboBox<Object>(tournament);
 		
@@ -53,7 +63,8 @@ public class TeamPanel extends JPanel implements ActionListener{
 		
 		if(e.getSource().equals(add)) {
 			
-			
+			binaryBeast.insertTeam(tourneyID[tourney.getSelectedIndex()], name.getText());
+			name.setText("");
 		}
 	}
 }

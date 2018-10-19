@@ -26,15 +26,12 @@ public class Main {
 		new ListPanel();
 		
 		frame = new Frame();
-		frame.createFrame("Mythical Beast Tournament", new Dimension(700, 300));
+		frame.createFrame("Mythical Beast Tournament", new Dimension(800, 300));
 		sql = new SQLConnection(References.SQL_HOST, References.SQL_DBNAME, References.SQL_USER, References.SQL_PASSWD);
 		binaryBeast = new BinaryBeast(References.BINARYBEAST_APIKEY);
 	}
 	
 	private static void init() {
-		
-		//binaryBeast.insertTeam("xSC21810175", "Mytical Beast");
-		//binaryBeast.startTournament("xSC21810175", "manual", "1");
 		
 		ListPanel.tourneyList = sql.getallTournament();
 		ListPanel.getMainList.refresh();
