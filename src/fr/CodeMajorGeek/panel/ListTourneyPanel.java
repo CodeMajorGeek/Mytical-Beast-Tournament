@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-public class ListPanel extends JPanel{
+public class ListTourneyPanel extends JPanel{
 	
 	private static final long serialVersionUID = -2921328574460398589L;
 	
-	public static ListPanel getMainList;
+	public static ListTourneyPanel getMainList;
 	
 	public static ArrayList<TourneyList> tourneyList = new ArrayList<TourneyList>();
 	
-	public ListPanel() {
+	public ListTourneyPanel() {
 		
 		setFocusable(true);
 		requestFocus();

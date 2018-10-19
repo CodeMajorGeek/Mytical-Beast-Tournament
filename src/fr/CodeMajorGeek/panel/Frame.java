@@ -110,7 +110,7 @@ public class Frame extends JFrame implements ActionListener{
 		} else if(panel == 2) {
 			
 			contentPane.removeAll();
-			contentPane.add(new ListPanel());
+			contentPane.add(new ListTourneyPanel());
 			contentPane.revalidate(); 
 			contentPane.repaint();
 			setTitle(title + " - Liste des tournois");

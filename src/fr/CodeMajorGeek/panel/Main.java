@@ -23,7 +23,7 @@ public class Main {
 		
 		new References();
 		
-		new ListPanel();
+		new ListTourneyPanel();
 		
 		frame = new Frame();
 		frame.createFrame("Mythical Beast Tournament", new Dimension(800, 300));
@@ -33,14 +33,14 @@ public class Main {
 	
 	private static void init() {
 		
-		ListPanel.tourneyList = sql.getallTournament();
-		ListPanel.getMainList.refresh();
+		ListTourneyPanel.tourneyList = sql.getallTournament();
+		ListTourneyPanel.getMainList.refresh();
 	}
 	
 	public static void refresh() {
 		
-		ListPanel.tourneyList = sql.getallTournament();
-		ListPanel.getMainList.refresh();
+		ListTourneyPanel.tourneyList = sql.getallTournament();
+		ListTourneyPanel.getMainList.refresh();
 	}
 	
 	public static SQLConnection getSQLConnection() {

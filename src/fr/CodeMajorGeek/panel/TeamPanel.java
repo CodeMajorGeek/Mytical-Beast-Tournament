@@ -32,12 +32,12 @@ public class TeamPanel extends JPanel implements ActionListener{
 		
 		getMainTeam = this;
 		
-		String[] tournament = new String[ListPanel.tourneyList.size()];
-		tourneyID = new String[ListPanel.tourneyList.size()];
-		for(int i = 0; i <= ListPanel.tourneyList.size() - 1; i++) {
+		String[] tournament = new String[ListTourneyPanel.tourneyList.size()];
+		tourneyID = new String[ListTourneyPanel.tourneyList.size()];
+		for(int i = 0; i <= ListTourneyPanel.tourneyList.size() - 1; i++) {
 			
-			tournament[i] = ListPanel.tourneyList.get(i).Title;
-			tourneyID[i] = ListPanel.tourneyList.get(i).TourneyID;
+			tournament[i] = ListTourneyPanel.tourneyList.get(i).Title;
+			tourneyID[i] = ListTourneyPanel.tourneyList.get(i).TourneyID;
 		}
 		
 		tourney = new JComboBox<Object>(tournament);
