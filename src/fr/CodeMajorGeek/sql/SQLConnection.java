@@ -31,9 +31,7 @@ public class SQLConnection {
 		try {
 			
 			Statement stat = connection.createStatement();
-			stat.execute("INSERT INTO tournament(Title, APIRequestID, TourneyID, APIFrameworkTime, APITotalTime, APIServiceTime, URL, Result) VALUES('" + Title + "', '" + APIRequestID + "', '" + TourneyID + "', '" + APIFrameworkTime +"', '" + APITotalTime +"', '" + APIServiceTime +"', '" + URL +"', '" + Result + "')");
-			
-			
+			stat.execute("INSERT INTO tournament(Title, APIRequestID, TourneyID, APIFrameworkTime, APITotalTime, APIServiceTime, URL, Result, Start) VALUES('" + Title + "', " + APIRequestID + ", '" + TourneyID + "', '" + APIFrameworkTime +"', '" + APITotalTime +"', '" + APIServiceTime +"', '" + URL +"', " + Result + ", FALSE)");
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -41,6 +39,18 @@ public class SQLConnection {
 		}
 		
 		Main.refresh();
+	}
+	
+	public void setStartedTournament(String TourneyID) {
+		
+		try {
+			
+			Statement stat = connection.createStatement();
+			stat.execute("UPDATE tournament SET Start = TRUE WHERE TourneyID = '" + TourneyID + "'");
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
 	}
 	
 	public void deleteTournament(String TourneyID) {
@@ -78,11 +88,11 @@ public class SQLConnection {
 		try {
 			
 			Statement stat = connection.createStatement();
-			ResultSet res = stat.executeQuery("SELECT id, Title, APIRequestID, TourneyID, APIFrameworkTime, APITotalTime, APIServiceTime, URL, Result FROM tournament");
+			ResultSet res = stat.executeQuery("SELECT id, Title, APIRequestID, TourneyID, APIFrameworkTime, APITotalTime, APIServiceTime, URL, Result, Start FROM tournament");
 			
 			while(res.next()) {
 				
-				list.add(new TourneyList(res.getInt("id"), res.getString("Title"), res.getInt("APIRequestID"), res.getString("TourneyID"), res.getString("APIFrameworkTime"), res.getString("APITotalTime"), res.getString("APIServiceTime"), res.getString("URL"), res.getInt("Result")));
+				list.add(new TourneyList(res.getInt("id"), res.getString("Title"), res.getInt("APIRequestID"), res.getString("TourneyID"), res.getString("APIFrameworkTime"), res.getString("APITotalTime"), res.getString("APIServiceTime"), res.getString("URL"), res.getInt("Result"), res.getBoolean("Start")));
 			}
 			
 		} catch (SQLException e) {
