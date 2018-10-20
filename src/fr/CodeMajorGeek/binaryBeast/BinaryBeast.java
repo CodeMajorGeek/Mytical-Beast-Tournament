@@ -126,7 +126,7 @@ public class BinaryBeast {
 		});;
 	}
 	
-	public void insertTeam(String tourneyID, String displayName) {
+	public void insertTeam(String tourneyID, String displayName, String TourneyTitle) {
 		
 		BBRequest.teamInsert(tourneyID, displayName).execute(new BBRequestHandler() {
 
@@ -135,7 +135,14 @@ public class BinaryBeast {
 				
 				if(r.result == 200) {
 					
-					System.out.println(r);
+					try {
+						
+						sql.addTeam(displayName, TourneyTitle, r.getInt("TourneyTeamID"), r.getInt("APIRequestID"), r.getString("APIFrameworkTime"), r.getString("APITotalTime"), r.getString("APIServiceTime"), r.result);
+					} catch (JSONException e) {
+						
+						e.printStackTrace();
+						System.exit(-1);
+					}
 				} else {
 					
 					System.exit(-1);

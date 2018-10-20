@@ -2,6 +2,7 @@ package fr.CodeMajorGeek.panel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -17,11 +18,13 @@ public class TeamPanel extends JPanel implements ActionListener{
 	
 	public static TeamPanel getMainTeam;
 	
-	public static BinaryBeast binaryBeast = Main.getBinaryBeast();
+	private static BinaryBeast binaryBeast = Main.getBinaryBeast();
+	
 	
 	private JTextField name = new JTextField(7);
 	private JComboBox<?> tourney;
-	private String[] tourneyID;
+	private ArrayList<String> tournament = new ArrayList<String>();
+	private ArrayList<String> tourneyID = new ArrayList<String>();
 	private JButton add = new JButton("Ajouter");
 	
 	
@@ -32,15 +35,17 @@ public class TeamPanel extends JPanel implements ActionListener{
 		
 		getMainTeam = this;
 		
-		String[] tournament = new String[ListTourneyPanel.tourneyList.size()];
-		tourneyID = new String[ListTourneyPanel.tourneyList.size()];
 		for(int i = 0; i <= ListTourneyPanel.tourneyList.size() - 1; i++) {
 			
-			tournament[i] = ListTourneyPanel.tourneyList.get(i).Title;
-			tourneyID[i] = ListTourneyPanel.tourneyList.get(i).TourneyID;
+			if(!ListTourneyPanel.tourneyList.get(i).Start) {
+				
+				tournament.add(ListTourneyPanel.tourneyList.get(i).Title);
+				tourneyID.add(ListTourneyPanel.tourneyList.get(i).TourneyID);
+			}
+				
 		}
 		
-		tourney = new JComboBox<Object>(tournament);
+		tourney = new JComboBox<Object>(tournament.toArray());
 		
 		tourney.addActionListener(this);
 		name.addActionListener(this);
@@ -48,14 +53,9 @@ public class TeamPanel extends JPanel implements ActionListener{
 		
 		add(new JLabel("Nom de la team: "));
 		add(name);
-		add(new JLabel("Pour le tournoi: "));
+		add(new JLabel("pour le tournoi: "));
 		add(tourney);
 		add(add);
-	}
-	
-	public void refresh() {
-		
-		
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class TeamPanel extends JPanel implements ActionListener{
 		
 		if(e.getSource().equals(add)) {
 			
-			binaryBeast.insertTeam(tourneyID[tourney.getSelectedIndex()], name.getText());
+			binaryBeast.insertTeam(tourneyID.get(tourney.getSelectedIndex()), name.getText(), tournament.get(tourney.getSelectedIndex()));
 			name.setText("");
 		}
 	}

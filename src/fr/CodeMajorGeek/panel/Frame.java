@@ -32,6 +32,7 @@ public class Frame extends JFrame implements ActionListener{
 	private JMenuItem item4 = new JMenuItem("Lister les tournois", KeyEvent.VK_T);
 	private JMenuItem item5 = new JMenuItem("Actualiser", KeyEvent.VK_T);
 	private JMenuItem item6 = new JMenuItem("Créer une team", KeyEvent.VK_T);
+	private JMenuItem item7 = new JMenuItem("Lister les teams", KeyEvent.VK_T);
 	
 	public Frame() {
 		
@@ -46,6 +47,7 @@ public class Frame extends JFrame implements ActionListener{
 		menu1.add(item3);
 		menu1.add(item4);
 		menu2.add(item6);
+		menu2.add(item7);
 		menu3.add(item5);
 		
 		item0.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
@@ -61,13 +63,16 @@ public class Frame extends JFrame implements ActionListener{
 		item3.getAccessibleContext().setAccessibleDescription("Créer un tournoi");
 		
 		item4.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
-		item4.getAccessibleContext().setAccessibleDescription("Lister tous les tournois");
+		item4.getAccessibleContext().setAccessibleDescription("Lister tout les tournois");
 		
 		item5.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
 		item5.getAccessibleContext().setAccessibleDescription("Actualiser tout les serveurs");
 		
 		item6.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
-		item6.getAccessibleContext().setAccessibleDescription("Actualiser tout les serveurs");
+		item6.getAccessibleContext().setAccessibleDescription("Créer une team");
+		
+		item7.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
+		item7.getAccessibleContext().setAccessibleDescription("Lister tout les teams");
 		
 		item0.addActionListener(this);
 		item1.addActionListener(this);
@@ -76,6 +81,7 @@ public class Frame extends JFrame implements ActionListener{
 		item4.addActionListener(this);
 		item5.addActionListener(this);
 		item6.addActionListener(this);
+		item7.addActionListener(this);
 	}
 	
 	public void createFrame(String title, Dimension dim) {
@@ -121,6 +127,13 @@ public class Frame extends JFrame implements ActionListener{
 			contentPane.revalidate(); 
 			contentPane.repaint();
 			setTitle(title + " - Crééer une team");
+		} else if(panel == 4) {
+			
+			contentPane.removeAll();
+			contentPane.add(new ListTeamPanel());
+			contentPane.revalidate(); 
+			contentPane.repaint();
+			setTitle(title + " - Liste des teams");
 		}
 	}
 	
@@ -148,6 +161,9 @@ public class Frame extends JFrame implements ActionListener{
 		} else if(e.getSource().equals(item6)) {
 			
 			changePane(3);
+		} else if(e.getSource().equals(item7)) {
+			
+			changePane(4);
 		}
 	}
 	

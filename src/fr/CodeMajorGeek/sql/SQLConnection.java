@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import fr.CodeMajorGeek.panel.Main;
+import fr.CodeMajorGeek.panel.TeamList;
 import fr.CodeMajorGeek.panel.TourneyList;
 
 public class SQLConnection {
@@ -39,6 +40,21 @@ public class SQLConnection {
 		}
 		
 		Main.refresh();
+	}
+	
+	public void addTeam(String Title, String TourneyTitle, int TourneyTeamID, int APIRequestID, String APIFrameworkTime, String APITotalTime, String APIServiceTime, int Result) {
+		
+		try {
+			
+			Statement stat = connection.createStatement();
+			System.out.println("INSERT INTO team(Title, TourneyTitle, TourneyTeamID, APIRequestID, APIFrameworkTime, APITotalTime, APIServiceTime, Result) VALUES ('" + Title + "', '" + TourneyTitle + "', " + TourneyTeamID + ", " + APIRequestID + ", '" + APIFrameworkTime + "', '" + APITotalTime + "', '" + APIServiceTime + "', " + Result + ")");
+			stat.execute("INSERT INTO team(Title, TourneyTitle, TourneyTeamID, APIRequestID, APIFrameworkTime, APITotalTime, APIServiceTime, Result) VALUES ('" + Title + "', '" + TourneyTitle + "', " + TourneyTeamID + ", " + APIRequestID + ", '" + APIFrameworkTime + "', '" + APITotalTime + "', '" + APIServiceTime + "', " + Result + ")");
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			System.exit(-1);
+		}
+		
 	}
 	
 	public void setStartedTournament(String TourneyID) {
@@ -88,13 +104,35 @@ public class SQLConnection {
 		try {
 			
 			Statement stat = connection.createStatement();
-			ResultSet res = stat.executeQuery("SELECT id, Title, APIRequestID, TourneyID, APIFrameworkTime, APITotalTime, APIServiceTime, URL, Result, Start FROM tournament");
+			ResultSet res = stat.executeQuery("SELECT* FROM tournament");
 			
 			while(res.next()) {
 				
 				list.add(new TourneyList(res.getInt("id"), res.getString("Title"), res.getInt("APIRequestID"), res.getString("TourneyID"), res.getString("APIFrameworkTime"), res.getString("APITotalTime"), res.getString("APIServiceTime"), res.getString("URL"), res.getInt("Result"), res.getBoolean("Start")));
 			}
 			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			System.exit(-1);
+		}
+		
+		return list;
+	}
+	
+	public ArrayList<TeamList> getallTeam(){
+		
+		ArrayList<TeamList> list = new ArrayList<TeamList>();
+		
+		try {
+			
+			Statement stat = connection.createStatement();
+			ResultSet res = stat.executeQuery("SELECT * FROM team");
+			
+			while(res.next()) {
+				
+				list.add(new TeamList(res.getInt("id"), res.getString("Title"), res.getString("TourneyTitle"), res.getInt("TourneyTeamID"), res.getInt("APIRequestID"), res.getString("APIFrameworkTime"), res.getString("APITotalTime"), res.getString("APIServiceTime"), res.getInt("Result")));
+			}
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

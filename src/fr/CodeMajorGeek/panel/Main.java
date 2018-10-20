@@ -24,6 +24,7 @@ public class Main {
 		new References();
 		
 		new ListTourneyPanel();
+		new ListTeamPanel();
 		
 		frame = new Frame();
 		frame.createFrame("Mythical Beast Tournament", new Dimension(800, 300));
@@ -33,14 +34,16 @@ public class Main {
 	
 	private static void init() {
 		
-		ListTourneyPanel.tourneyList = sql.getallTournament();
-		ListTourneyPanel.getMainList.refresh();
+		refresh();
 	}
 	
 	public static void refresh() {
 		
 		ListTourneyPanel.tourneyList = sql.getallTournament();
 		ListTourneyPanel.getMainList.refresh();
+		
+		ListTeamPanel.teamList = sql.getallTeam();
+		ListTeamPanel.getMainList.refresh();
 	}
 	
 	public static SQLConnection getSQLConnection() {
