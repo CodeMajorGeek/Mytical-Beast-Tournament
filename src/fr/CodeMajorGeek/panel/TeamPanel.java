@@ -66,5 +66,7 @@ public class TeamPanel extends JPanel implements ActionListener{
 			binaryBeast.insertTeam(tourneyID.get(tourney.getSelectedIndex()), name.getText(), tournament.get(tourney.getSelectedIndex()));
 			name.setText("");
 		}
+		
+		Main.refresh();
 	}
 }

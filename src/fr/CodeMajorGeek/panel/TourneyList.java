@@ -67,6 +67,8 @@ public class TourneyList {
 			public void actionPerformed(ActionEvent e) {
 				
 				binaryBeast.deleteTournament(TourneyID);
+				
+				Main.refresh();
 			}
 		});
 		
@@ -77,10 +79,12 @@ public class TourneyList {
 				
 				if(!Start) {
 					
-					binaryBeast.startTournament(TourneyID, "manual", "0");
+					binaryBeast.startTournament(TourneyID, "manual", "");
 					sql.setStartedTournament(TourneyID);
 					start.setEnabled(false);
-				}	
+				}
+				
+				Main.refresh();
 			}
 		});
 		
@@ -97,6 +101,7 @@ public class TourneyList {
 			panel.setBorder(new CompoundBorder(new LineBorder(Color.RED), new EmptyBorder(4,4,4,4)));
 		else
 			panel.setBorder(new CompoundBorder(new LineBorder(Color.GREEN), new EmptyBorder(4,4,4,4)));
+		
 		return panel;
 	}
 }

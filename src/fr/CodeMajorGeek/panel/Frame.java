@@ -43,7 +43,7 @@ public class Frame extends JFrame implements ActionListener{
 		
 		menu0.add(item0);
 		menu0.add(item1);
-		menu1.add(item2);
+		menu3.add(item2);
 		menu1.add(item3);
 		menu1.add(item4);
 		menu2.add(item6);
@@ -148,21 +148,26 @@ public class Frame extends JFrame implements ActionListener{
 			
 		} else if(e.getSource().equals(item2)) {
 			
+			Main.refresh();
 			changePane(0);
 		} else if(e.getSource().equals(item3)) {
 			
+			Main.refresh();
 			changePane(1);
 		} else if(e.getSource().equals(item4)) {
 			
+			Main.refresh();
 			changePane(2);
 		} else if(e.getSource().equals(item5)) {
 			
 			Main.refresh();
 		} else if(e.getSource().equals(item6)) {
 			
+			Main.refresh();
 			changePane(3);
 		} else if(e.getSource().equals(item7)) {
 			
+			Main.refresh();
 			changePane(4);
 		}
 	}

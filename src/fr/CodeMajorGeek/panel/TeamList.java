@@ -37,17 +37,17 @@ public class TeamList {
 	public JPanel getList() {
 		JPanel panel = new JPanel();
 		
-		JTextField title = new JTextField(7);
+		JTextField title = new JTextField(9);
 		title.setText(Title);
 		title.setEditable(false);
 		
-		JTextField teamID = new JTextField(7);
+		JTextField teamID = new JTextField(9);
 		teamID.setText(TourneyTeamID + "");
 		teamID.setEditable(false);
 		
-		JTextField tourneyTitle = new JTextField(7);
-		teamID.setText(TourneyTitle);
-		teamID.setEditable(false);
+		JTextField tourneyTitle = new JTextField(9);
+		tourneyTitle.setText(TourneyTitle);
+		tourneyTitle.setEditable(false);
 		
 		panel.add(new JLabel("Team: "));
 		panel.add(title);
