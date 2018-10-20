@@ -52,6 +52,7 @@ public class TourneyList {
 		JTextField ID = new JTextField(TourneyID + "", 7);
 		JTextField url = new JTextField(URL);
 		
+		JButton update = new JButton("Actualiser");
 		JButton start = new JButton("Démarrer");
 		JButton remove = new JButton("Supprimer");
 		
@@ -88,12 +89,24 @@ public class TourneyList {
 			}
 		});
 		
+		update.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				binaryBeast.updateTournament(TourneyID);
+				
+				Main.refresh();
+			}
+		});
+		
 		panel.add(new JLabel("Titre: "));
 		panel.add(title);
 		panel.add(new JLabel("ID de tournoi: "));
 		panel.add(ID);
 		panel.add(new JLabel("URL: "));
 		panel.add(url);
+		panel.add(update);
 		panel.add(remove);
 		panel.add(start);
 		

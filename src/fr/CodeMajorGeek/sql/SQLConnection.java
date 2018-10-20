@@ -85,12 +85,12 @@ public class SQLConnection {
 		Main.refresh();
 	}
 	
-	public void updateTournament(String TourneyID, String APIRequestID) {
+	public void updateTournament(String TourneyID, int APIRequestID) {
 		
 		try {
 			
 			Statement stat = connection.createStatement();
-			stat.execute("UPDATE tournament SET APIRequestID = '" + APIRequestID + "' WHERE TourneyID = '" + TourneyID + "'");
+			stat.execute("UPDATE tournament SET APIRequestID = " + APIRequestID + " WHERE TourneyID = '" + TourneyID + "'");
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

@@ -76,7 +76,7 @@ public class BinaryBeast {
 					System.out.println(r);
 					try {
 						
-						sql.updateTournament(tourneyID, r.getString("APIRequestID"));
+						sql.updateTournament(tourneyID, r.getInt("APIRequestID"));
 					} catch (JSONException e) {
 						
 						e.printStackTrace();

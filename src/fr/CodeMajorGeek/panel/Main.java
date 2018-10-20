@@ -27,7 +27,7 @@ public class Main {
 		new ListTeamPanel();
 		
 		frame = new Frame();
-		frame.createFrame("Mythical Beast Tournament", new Dimension(800, 300));
+		frame.createFrame("Mythical Beast Tournament", new Dimension(900, 300));
 		sql = new SQLConnection(References.SQL_HOST, References.SQL_DBNAME, References.SQL_USER, References.SQL_PASSWD);
 		binaryBeast = new BinaryBeast(References.BINARYBEAST_APIKEY);
 	}
