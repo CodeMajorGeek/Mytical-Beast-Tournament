@@ -45,7 +45,7 @@ public class TeamList {
 		teamID.setText(TourneyTeamID + "");
 		teamID.setEditable(false);
 		
-		JTextField tourneyID = new JTextField(7);
+		JTextField tourneyTitle = new JTextField(7);
 		teamID.setText(TourneyTitle);
 		teamID.setEditable(false);
 		
@@ -54,7 +54,7 @@ public class TeamList {
 		panel.add(new JLabel("TeamID: "));
 		panel.add(teamID);
 		panel.add(new JLabel("dans le tournoi: "));
-		panel.add(tourneyID);
+		panel.add(tourneyTitle);
 		
 		panel.setBorder(new CompoundBorder(new LineBorder(Color.LIGHT_GRAY), new EmptyBorder(4, 4, 4, 4)));
 		
